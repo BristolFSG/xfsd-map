@@ -1,4 +1,4 @@
-<!Doctype html>
+﻿<!Doctype html>
 <html xml:lang="en">
   <head>
       <meta charset="utf-8">
@@ -155,6 +155,12 @@
               width: 100%;
           }
 
+          #bfsglogo {
+              position: absolute;
+              bottom: 71px;
+              left: 6px;
+          }
+
           #logo {
               position: absolute;
               bottom: 30px;
@@ -210,8 +216,14 @@
            ng-click="toggleAside($event, this)">
   </aside>
 
+  <div id="bfsglogo">
+      <a href="http://www.bristolflightsimgroup.org.uk/" target="_blank" title="Click here to register and fly on this map!">
+          <img src="/xfsdmap/Content/Graphics/BFSGBanner.png" alt="bfsglogo" width="100">
+      </a>
+  </div>
+
   <div id="logo">
-      <a href="http://x-flightserver.net/" target="_blank" title="Click here to register and fly on this map!">
+      <a href="http://x-flightserver.net/" target="_blank" title="This map software has been kindly provided by X-FlightServer.net">
           <img src="http://x-flightserver.net/pics/logo.jpg" alt="logo" width="100">
       </a>
   </div>
