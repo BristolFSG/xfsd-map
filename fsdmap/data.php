@@ -1,7 +1,7 @@
 <?php
 //ini_set("display_errors", "Off");
-include_once('../Log.php');
-require_once('../db.class.php');
+//include_once('../Log.php');
+require_once('./db.class.php');
 require_once('./route.class.php');
 require_once('./geo.php');
 $db = new db_class;
@@ -14,7 +14,7 @@ $db = new db_class;
 $action = $_GET["action"];
 $cs = $_GET["cs"];
 
-debugStartClean();
+//debugStartClean();
 
 switch ($action){
 	case "positions" :
@@ -39,7 +39,7 @@ function getTrack($db, $cs){
 	if ($_GET["route"]!= "DCT,VFR") {
 		$paramRoute = explode("|",mysql_escape_string(strtoupper($_GET["route"])));
 	}
-	debug($paramRoute);
+//	debug($paramRoute);
 
 	$lines = array();
 	$points = array();
@@ -59,8 +59,8 @@ function getTrack($db, $cs){
 	$inputCount = $i;
 	
 	$r = $db->select($sqlRoute . ";");
-	debug($db->last_error);
-	debug($db->last_query);
+//	debug($db->last_error);
+//	debug($db->last_query);
 
 	$route = new Route();
 	while ($row = $db->get_row($r, 'MYSQL_ASSOC')) {
@@ -105,7 +105,7 @@ function getTrack($db, $cs){
 		//loop all waypoints
 		foreach ($finalRoute as $waypoint) {
 			array_push($points, $waypoint->asJSON());
-			debug("$waypoint");
+//			debug("$waypoint");
 		}
 
 		$config = array('colour'=>'#FF0000', 'width'=>2, 'points'=>$points, 'cs' => $cs);
@@ -113,7 +113,7 @@ function getTrack($db, $cs){
 
 
 	} else {
-		debug("Departure or Destination missing");
+//		debug("Departure or Destination missing");
 	}
 	$data = array('lines'=>$lines);
 	echo json_encode($data);
@@ -143,8 +143,8 @@ EOT;
 
 	//$r = $db->select("SELECT  xfsd_flights.ID, xfsd_positions.LAT, xfsd_positions.LON, xfsd_positions.ALT, xfsd_positions.KIAS, xfsd_positions.HDG, xfsd_pilots.CALLSIGN, xfsd_pilots.ICAO FROM xfsd_flights AS xfsd_flights, xfsd_pilots AS xfsd_pilots, xfsd_positions AS xfsd_positions WHERE xfsd_flights.PILOTID = xfsd_pilots.ID AND xfsd_positions.FLIGHTID = xfsd_flights.ID LIMIT 1");
 	$r = $db->select($sql);
-	debug($db->last_error);
-	debug($db->last_query);
+//	debug($db->last_error);
+//	debug($db->last_query);
 
 	while ($row=$db->get_row($r, 'MYSQL_ASSOC')) {
 		//echo "<p>plane at ".$row['LAT']. " " .$row['LON']. " " . $row['ALT']."</p>";
@@ -157,6 +157,6 @@ EOT;
 	$data = array('markers'=>$markers);
 	echo json_encode($data);
 
-	debug($data);
+//	debug($data);
 }
 ?>

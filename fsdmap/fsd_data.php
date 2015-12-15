@@ -1,5 +1,5 @@
 <?
-include_once('../Log.php');
+//include_once('../Log.php');
 require_once('settings.php');
 $filename = 'cache.xml';
 header('Content-type: application/xml');
@@ -8,13 +8,13 @@ if (file_exists($filename)) {
     header('Last-Modified: '.gmdate('D, d M Y H:i:s', $time).' GMT');
     header("Content-Length: " . filesize($filename)); 
 }
-debug("now: " . time() . " filetime: " . filemtime('cache.xml'). " Diff:" . time()-filemtime('cache.xml') . " Updatefreq: " . UPDATE_FREQ/1000);
+//debug("now: " . time() . " filetime: " . filemtime('cache.xml'). " Diff:" . time()-filemtime('cache.xml') . " Updatefreq: " . UPDATE_FREQ/1000);
 
 /*
 if (is_readable('cache.xml')){
 */
 if (is_readable('cache.xml') && time()-filemtime('cache.xml')<UPDATE_FREQ/1000){
-	debug("loading from cache");
+//	debug("loading from cache");
 	readfile('cache.xml');
 	die();
 }
@@ -152,9 +152,9 @@ ob_end_flush();
 if(is_writeable('cache.xml') && $fh=fopen('cache.xml','w')){
 	fwrite($fh,$xml);
 	fclose($fh);
-	debug("file written");
+//	debug("file written");
 } else {
-	debug("could not write cache file");
+//	debug("could not write cache file");
 }
 
 
