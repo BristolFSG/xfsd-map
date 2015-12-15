@@ -63,9 +63,9 @@ class db_class {
       // the select_database() function. 
       
       $this->host = 'localhost'; 
-      $this->user = 'my_username'; 
-      $this->pw = 'my_pasword'; 
-      $this->db = 'database_name'; 
+      $this->user = 'bfsg'; 
+      $this->pw = 'BristolFSG'; 
+      $this->db = 'navdata'; 
 
       $this->auto_slashes = true; 
    } 

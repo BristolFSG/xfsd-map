@@ -6,8 +6,8 @@ require_once('./route.class.php');
 require_once('./geo.php');
 $db = new db_class;
 
-// http://localhost/xfsd/fsdmap/data.php?debug&action=track&cs=TEST&from=MZBZ&to=SKBO&route=CAT01|ALMOR|-26.983,+51.124|AUH30|CAT|CAT05|ALMOR
-// http://localhost/xfsd/fsdmap/data.php?debug&action=track&cs=TEST&from=MMMX&to=KJFK&route=VASOS|D248R|APN|VISOS|XOSOK|TAM|ONBUL|SIDRA|PETRA|RAKAS|ABBOT|COKER|MAEKO|KELPP|TARPN|LEV|HRV|SJI|CATLN|MGM|AJFEB|IRQ|CAE|CASAT|TUBAS|RDU|FRANZ|TYI|ORF|SAWED|KALDA|SWL|RADDS|SIE|AVALO|BRIGS|DRIFT|MANTA|SHERL
+// http://localhost/xfsdmap/data.php?debug&action=track&cs=TEST&from=MZBZ&to=SKBO&route=CAT01|ALMOR|-26.983,+51.124|AUH30|CAT|CAT05|ALMOR
+// http://localhost/xfsdmap/data.php?debug&action=track&cs=TEST&from=MMMX&to=KJFK&route=VASOS|D248R|APN|VISOS|XOSOK|TAM|ONBUL|SIDRA|PETRA|RAKAS|ABBOT|COKER|MAEKO|KELPP|TARPN|LEV|HRV|SJI|CATLN|MGM|AJFEB|IRQ|CAE|CASAT|TUBAS|RDU|FRANZ|TYI|ORF|SAWED|KALDA|SWL|RADDS|SIE|AVALO|BRIGS|DRIFT|MANTA|SHERL
 
 ?>
 <?php
@@ -59,6 +59,8 @@ function getTrack($db, $cs){
 	$inputCount = $i;
 	
 	$r = $db->select($sqlRoute . ";");
+//	echo $sqlRoute;
+	
 //	debug($db->last_error);
 //	debug($db->last_query);
 
@@ -79,7 +81,7 @@ function getTrack($db, $cs){
 
 		$finalRoute = array();
 		foreach ($route->wpGroups as $id => $wpg) {
-			debug("$id $wpg->id:" . count($wpg->waypoints));
+			//debug("$id $wpg->id:" . count($wpg->waypoints));
 			if (count($wpg->waypoints)>1) {
 				$nearestWp = $route->getNearesWpFromGroup($wpg);
 				//debug($nearestWp);

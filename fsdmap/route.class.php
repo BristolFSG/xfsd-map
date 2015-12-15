@@ -89,7 +89,7 @@ class Route {
 		$nextGrp = $this->getNextGroup($g);
 		$prev = $prevGrp->getWp();
 		$next = $nextGrp->getWp();
-		debug("prev: $prev->icao next: $next->icao");
+		//debug("prev: $prev->icao next: $next->icao");
 		//loop through all WP in the group and see which one is closest
 		$shortestDist = 0;
 		$nextWp = null;
@@ -97,13 +97,13 @@ class Route {
 			$distPrev = GC_Calc($prev->lat, $prev->lng, $wp->lat, $wp->lng);
 			$distNext = GC_Calc($next->lat, $next->lng, $wp->lat, $wp->lng);
 			$distTotal = floatval($distPrev) + floatval($distNext);
-			debug("distance for $wp->name \t($wp->type) \t $distPrev \t $distNext \t $distTotal");
+			//debug("distance for $wp->name \t($wp->type) \t $distPrev \t $distNext \t $distTotal");
 			if($shortestDist == 0 || $distTotal < $shortestDist) {
 				$shortestDist = $distTotal;
 				$nextWp = $wp;
 			}
 		}
-		debug("closest waypoint: $nextWp->name \t at $shortestDist");
+		//debug("closest waypoint: $nextWp->name \t at $shortestDist");
 		return $nextWp;
 	}
 
